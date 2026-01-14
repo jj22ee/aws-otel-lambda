@@ -22,8 +22,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        architecture: [ amd64 ]
-        runtime: [java17]
+        architecture: [ amd64, arm64 ]
+        runtime: [java17, java11]
         sample-app: [ aws-sdk, okhttp ]
         instrumentation-type: [ wrapper ]
         confmap: [ "noop" ]
@@ -34,8 +34,28 @@ jobs:
             confmap: noop
             runtime: java17
           - sample-app: aws-sdk
+            instrumentation-type: agent
+            architecture: amd64
+            confmap: noop
+            runtime: java11
+          - sample-app: aws-sdk
+            instrumentation-type: agent
+            architecture: arm64
+            confmap: noop
+            runtime: java17
+          - sample-app: aws-sdk
+            instrumentation-type: agent
+            architecture: arm64
+            confmap: noop
+            runtime: java11
+          - sample-app: aws-sdk
             instrumentation-type: agent-confmap
             architecture: amd64
+            confmap: s3
+            runtime: java11
+          - sample-app: aws-sdk
+            instrumentation-type: agent-confmap
+            architecture: arm64
             confmap: s3
             runtime: java11
           - sample-app: aws-sdk
@@ -45,7 +65,17 @@ jobs:
             runtime: java11
           - sample-app: aws-sdk
             instrumentation-type: agent-confmap
+            architecture: arm64
+            confmap: http
+            runtime: java11
+          - sample-app: aws-sdk
+            instrumentation-type: agent-confmap
             architecture: amd64
+            confmap: https
+            runtime: java11
+          - sample-app: aws-sdk
+            instrumentation-type: agent-confmap
+            architecture: arm64
             confmap: https
             runtime: java11
 
