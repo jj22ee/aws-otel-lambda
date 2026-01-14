@@ -20,7 +20,7 @@
     }
   },
   {
-    "name":"api.github.com",
+    "name":"HTTP GET",
     "inferred":true,
     "http":{
       "request":{
